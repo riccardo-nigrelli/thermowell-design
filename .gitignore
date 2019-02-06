@@ -334,3 +334,6 @@ ASALocalRun/
 .localhistory/
 
 release-builds
+
+.vscode
+package-lock.json
