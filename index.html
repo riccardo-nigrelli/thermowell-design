@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Thermowell Design</title>
+
+	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+	
+	<link 
+			rel="stylesheet" 
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+			crossorigin="anonymous"
+	/>
+		
+</head>
+
+<body>
+
+	<h1 class="title">Thermowell Design</h1>
+
+	<!-- <div id='custom-modal' class='modal fade' role='dialog'>
+		<div class='modal-dialog'>
+			<div class='modal-content'>
+				<div class='modal-body'>
+					<form id='data' method='post'>
+						<div class='row'>
+							<div class='col-sm-12'>
+								<div class='form-group'>
+									<input id='customer' type='text' name='customer' class='form-control' placeholder='Customer'></input>
+								</div>
+							</div>
+
+							<div class='col-sm-12'>
+								<div class='form-group'>
+									<input id='tag' type='text' name='tag' class='form-control' placeholder='Tag'></input>
+								</div>
+							</div>
+
+							<div class='col-sm-12'>
+								<div class='form-group'>
+									<input id='pN' type='text' name='pN' class='form-control' placeholder='P.O.No.'></input>
+								</div>
+							</div>
+
+						</div>
+						<div class='modal-footer' style='margin-top: 25px;'>
+							<button id='additionalData' type='button' class='btn btn-default'>Fine</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div> -->
+
+	<div class="container m-top-30">
+		<form id="formEmail">
+			<fieldset class="form-group">
+				<div class="col-sm-10">
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="gridRadios" id="316" value="316">
+						<label class="form-check-label" for="gridRadios1">
+							316
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="gridRadios" id="316L" value="316L">
+						<label class="form-check-label" for="gridRadios2">
+							316L
+						</label>
+					</div>
+				</div>
+			</fieldset>
+
+			<div class="row">
+
+				<div class="col-md-4">
+
+					<div class="form-group">
+						<select id="selectType" name="typeThermowell" class="form-control">
+							<option value="">-- Seleziona il tipo --</option>
+							<option value="assets/images/FLANGED_THERMOWELL.png">FLANGED THERMOWELL</option>
+							<option value="assets/images/WELD_IN_THERMOWELL.png">WELD IN THERMOWELL</option>
+							<option value="assets/images/FULL_PENETRATION_THERMOWELL.png">FULL PENETRATION THERMOWELL</option>
+							<option value="assets/images/LAP_JOINT_THERMOWELL.png">LAP JOINT THERMOWELL</option>
+							<option value="assets/images/THREADED_THERMOWELL.png">THREADED THERMOWELL</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<input id="pressure" name="pressure" type="text" placeholder="Pressure [bar]" class="form-control" onchange="checkObject(this);">
+					</div>
+
+					<div class="form-group">
+						<input id="temperature" name="temperature" type="text" placeholder="Temperature [°C]" class="form-control"
+						 onchange="checkObject(this);">
+					</div>
+
+					<div class="form-group">
+						<input id="speed" name="speed" type="text" placeholder="Speed [m/s]" class="form-control" onchange="checkObject(this);">
+					</div>
+
+					<div class="form-group">
+						<input id="density" name="density" type="text" placeholder="Density [kg/m^3]" class="form-control" onchange="checkObject(this);">
+					</div>
+
+					<div class="form-group">
+						<input id="viscosity" name="viscosity" type="text" placeholder="Viscosity [cP]" class="form-control" onchange="checkObject(this);">
+					</div>
+
+				</div>
+
+				<div class="col-md-4">
+
+					<div class="form-group">
+						<input id="rootDiameter" name="rootDiameter" type="text" placeholder="Root Diameter [mm]" class="form-control"
+						 onchange="checkObject(this);">
+					</div>
+
+					<div class="form-group">
+						<input id="tipDiameter" name="tipDiameter" type="text" placeholder="Tip Diameter [mm]" class="form-control"
+						 onchange="checkObject(this);">
+					</div>
+
+					<div class="form-group">
+						<input id="internalDiameter" name="internalDiameter" type="text" placeholder="Internal Diameter [mm]" class="form-control"
+						 onchange="checkObject(this);">
+					</div>
+
+					<div class="form-group">
+						<input id="length" name="length" type="text" placeholder="Length [mm]" class="form-control" onchange="checkObject(this);">
+					</div>
+
+					<div class="form-group">
+						<input id="minimumThickness" name="minimumThickness" type="text" placeholder="Minimum Thickness [mm]" class="form-control"
+						 onchange="checkObject(this);">
+					</div>
+
+					<div class="form-group">
+						<input id="shieldLength" name="shieldLength" type="text" placeholder="Nozzle Height [mm]" class="form-control"
+						 onchange="checkObject(this);">
+					</div>
+
+				</div>
+
+				<div id="imgBackground" class="col-md-4 text-center">
+				</div>
+
+			</div>
+
+			<div class="row m-top-15">
+				<div class="col-md-12 text-center">
+					<div class="form-group">
+						<button id="calcola" type="button" class="btn btn-primary m-right-30">Calcola</button>
+						<button id="esporta" type="button" class="btn btn-primary">Esporta</button>
+					</div>
+				</div>
+			</div>
+
+		</form>
+
+		<div class="row m-top-30">
+
+			<div class="col-sm-4">
+				<h6>WAKE FREQUENCY CALCULATION: <span id="wakeFrequencyCalculation"></span></h6>
+				<h6>Strouhal Frequency: <span id="strouhalFrequency"></span></h6>
+				<h6>Natural Frequency: <span id="naturalFrequency"></span></h6>
+				<h6>Frequency Ratio: <span id="frequencyRatio"></span></h6>
+			</div>
+
+			<div class="col-sm-4">
+				<h6>STEADY-STATE STRESS CALCULATION: <span id="sssc"></span></h6>
+				<h6>Von Mises Stress: <span id="vonMisesStress"></span></h6>
+				<h6>Stress Limit: <span id="stressLimit1"></span></h6>
+			</div>
+
+		</div>
+
+		<div class="row m-top-30 m-bottom-30">
+
+			<div class="col-sm-4">
+				<h6>PRESSURE TEST CALCULATION: <span id="pressureTestCalculation"></span></h6>
+				<h6>Minimum External Pressure: <span id="minExtPress"></span></h6>
+				<h6>Operating Pressure: <span id="operationPressure"></span></h6>
+			</div>
+
+			<div class="col-sm-4">
+				<h6>DYNAMIC STRESS CALCULATION: <span id="dsc"></span></h6>
+				<h6>Combined Drag & Lift Stress: <span id="cdls"></span></h6>
+				<h6>Stress Limit: <span id="stressLimit2"></span></h6>
+			</div>
+
+			<div class="col-sm-4 text-right">
+				<img src="assets/images/logo.jpg" alt="Logo ITEC">
+			</div>
+
+		</div>
+
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" onload="window.$ = window.jQuery = module.exports;">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	 crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+	 crossorigin="anonymous">
+	</script>
+
+	<script src="assets/js/controller.js"></script>
+
+	<!-- <script>
+		$(document).ready(() => {
+			$('#custom-modal').hide();
+		});
+	</script> -->
+
+	<script>
+		$('#selectType').change(() => {
+			$('#imgBackground').css('background-image', 'url(' + $('#selectType').val() + ')');
+		});
+	</script>
+
+	<script src="assets/js/calculate.js"></script>
+	<script src="assets/js/export.js"></script>
+
+</body>
+
+</html>
