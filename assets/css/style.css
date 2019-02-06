@@ -1,0 +1,151 @@
+.title{
+    margin-top: 40px;
+    text-align: center;
+    font-family: 'Arvo', serif;
+}
+
+.m-top-30{
+    margin-top: 30px;
+}
+
+.form-control {
+    height: 50px;
+    border: 1px solid #ccc;
+    /* border-radius: 0px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 0px 20px rgba(0, 0, 0, .075);
+    width: 100%;
+    height: 50px; */
+}
+
+.form-control:focus{
+    border: 1px solid #ccc;
+    outline: 0;
+    box-shadow: none;
+    -webkit-box-shadow: none; 
+}
+
+/* .form-control {
+    border-radius: 0px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 0px 20px rgba(0, 0, 0, .075);
+    width: 100%;
+    height: 50px;
+} */
+
+/* .form-control:focus {
+    outline: 0;
+} */
+
+.has-success .form-control{
+    border-color: #5cb85c;
+}
+.has-success .form-control-success{
+    background-image: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='%235cb85c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>");
+}
+
+.form-control-success{
+    padding-right: 2.25rem;
+    background-repeat: no-repeat;
+    background-position: center right .5625rem;
+    -webkit-background-size: 1.125rem 1.125rem;
+    background-size: 1.125rem 1.125rem;
+}
+
+.has-danger .form-control {
+    border-color: #d9534f;
+}
+
+.has-danger .form-control-danger {
+    background-image: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='%23d9534f' viewBox='-2 -2 7 7'><path stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/><circle r='.5'/><circle cx='3' r='.5'/><circle cy='3' r='.5'/><circle cx='3' cy='3' r='.5'/></svg>");
+}
+
+.form-control-danger, .form-control-success, .form-control-warning {
+    padding-right: 2.25rem;
+    background-repeat: no-repeat;
+    background-position: center right .5625rem;
+    -webkit-background-size: 1.125rem 1.125rem;
+    background-size: 1.125rem 1.125rem;
+}
+
+textarea{
+    resize: vertical;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="month"],
+input[type="number"],
+input[type="email"],
+input[type="search"],
+.uneditable-input {
+    outline: none;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: transparent;
+    background-image: none;
+}
+
+textarea::-webkit-input-placeholder {
+	color: #cdcdcd;
+	font-style: italic;
+	padding: 5px;
+}
+
+textarea::-moz-input-placeholder {
+	color: #cdcdcd;
+	font-style: italic;
+	padding: 5px;
+}
+
+textarea::-ms-input-placeholder {
+	color: #cdcdcd;
+	font-style: italic;
+	padding: 5px;
+}
+
+.dinamic{
+    font-size: 80px;
+    color: #a51c30;
+    /* text-align: center; */
+    margin-left: 45%;
+}
+
+.static{
+    font-size: 50px;
+    color: #a51c30;
+    /* text-align: center; */
+    margin-left: 45%;
+}
+
+h5{
+    font-family: 'Arvo', serif;
+    font-weight: bolder;
+}
+
+#imgBackground{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.m-top-15{
+    margin-top: 15px;
+}
+
+.m-right-30{
+    margin-right: 30px;
+}
+
+.m-bottom-30{
+    margin-bottom: 30px;
+}
+
+.text-right{
+    text-align: right;
+}
