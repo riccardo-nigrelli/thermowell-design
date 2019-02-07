@@ -1,20 +1,22 @@
-var base64Img = require('base64-img');
+const base64Img = require('base64-img');
 const JsPDF   = require('jspdf');
 
-const LAYOUT    = base64Img.base64Sync('assets/images/layout.png');
+const LAYOUT    = base64Img.base64Sync(`${__dirname}/assets/images/layout.png`);
 
 let customer, pN, tag;
 
-var data = new Date();
-var gg, mm, aaaa;
+let data = new Date();
+let gg, mm, aaaa;
 gg = data.getDate() + "/";
 mm = data.getMonth() + 1 + "/";
 aaaa = data.getFullYear();
-var today = gg + mm + aaaa;
+let today = gg + mm + aaaa;
 
 $(document).ready( () => {
 
-    $(document).on("click", "#esporta", () => {
+    $(document).on("click", "#additionalData", () => {
+
+        // console.log(__dirname)
 
         var pdf = new JsPDF();
 
@@ -46,8 +48,9 @@ $(document).ready( () => {
         pdf.text('Density: ' + $('#density').val() + ' [Kg/m^3]', 33.4, 125);
         pdf.text('Viscosity: ' + $('#viscosity').val() + ' [cP]', 33.4, 130);
         
-        var type = $('#selectType').val().substring(4, $('#selectType').val().length - 4),
-            sketch = base64Img.base64Sync($('#selectType').val()),
+        let path = $('select[name=typeThermowell]').val();
+        let type = $('#selectType').val().substring(14, $('#selectType').val().length - 4),
+            sketch = base64Img.base64Sync(`${__dirname}/${path}`),
             typeLower = "";
         
         switch(type){
@@ -139,12 +142,14 @@ $(document).ready( () => {
         pdf.text('Itec has made every reasonable attempt to validate the calculation procedure contained in this file, however, responsability for validation rests solely with the user.', 30, 280);
 
         pdf.save(customer + '_' + tag + '.pdf');
-        // $("#custom-modal").modal("hide");
+
+
+        $("#custom-modal").modal("hide");
     });
 
 
-    // $('#esporta').click( () => {
-    //     $("#custom-modal").modal("show");
-    // });
+    $('#esporta').click( () => {
+        $("#custom-modal").modal("show");
+    });
 
 });
