@@ -53,11 +53,13 @@ function testAllField(){
 }
 
 function setSf(type) {
-    var sF;
+    // let sF;
 
-    if (type == "FLANGED_THERMOWELL" || type == "WELD_IN_THERMOWELL") return sF = 372;
-    else if (type == "FULL_PENETRATION_THERMOWELL") return sF = 628;
-    else if (type == "LAP_JOINT_THERMOWELL" || type == "THREADED_THERMOWELL") return sF = 938;
+    type = type.substr(7, type.length)
+
+    if (type == "FLANGED_THERMOWELL" || type == "WELD_IN_THERMOWELL") return 372;
+    else if (type == "FULL_PENETRATION_THERMOWELL") return 628;
+    else if (type == "LAP_JOINT_THERMOWELL" || type == "THREADED_THERMOWELL") return 938;
 }
 
 function setVariableNr(speed, tipDiameter, density, viscosity) {
