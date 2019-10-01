@@ -1,6 +1,6 @@
 {
   "name": "thermowell-design",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Cross-Platform desktop app for design a termowell",
   "main": "main.js",
   "scripts": {
@@ -20,8 +20,8 @@
     "base64-img": "^1.0.4",
     "electron": "^4.0.4",
     "electron-installer-dmg": "^2.0.0",
-    "electron-packager": "^13.1.1",
-    "electron-winstaller": "^2.7.0"
+    "electron-packager": "^14.0.6",
+    "electron-winstaller": "^4.0.0"
   },
   "dependencies": {
     "base64-img": "^1.0.4",
