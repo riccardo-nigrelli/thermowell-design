@@ -52,6 +52,24 @@ function testAllField(){
     return (pressione && temperature && speed && density && viscosity && rootDiameter && tipDiameter && internalDiameter && length && minimumThickness && shieldLength);
 }
 
+function setMetalDensityM( typeMetal ) {
+    if ( typeMetal == "316" || typeMetal == "316L") {
+        return 7980;
+    }
+    else if ( typeMetal == "F51" || typeMetal == "F53") {
+        return 7820;
+    }
+}
+
+function setMetalDensityMM( typeMetal ) {
+    if ( typeMetal == "316" || typeMetal == "316L") {
+        return 0.00000798;
+    }
+    else if ( typeMetal == "F51" || typeMetal == "F53") {
+        return 0.00000782;
+    }
+}
+
 function setSf(type) {
     // let sF;
 
@@ -84,49 +102,79 @@ function setS(typeMetal, temperature) {
     var S;
 
     if(typeMetal == "316") {
-        if (temperature < 40)  S = 18.8;
-            else if (temperature >= 40 && temperature < 100) S = 16.2;
-            else if (temperature >= 100 && temperature < 150) S = 14.6;
-            else if (temperature >= 150 && temperature < 200) S = 13.4;
-            else if (temperature >= 200 && temperature < 260) S = 12.5;
-            else if (temperature >= 260 && temperature < 315) S = 11.8;
-            else if (temperature >= 315 && temperature < 345) S = 11.6;
-            else if (temperature >= 345 && temperature < 370) S = 11.3;
-            else if (temperature >= 370 && temperature < 400) S = 11.2;
-            else if (temperature >= 400 && temperature < 425) S = 11.0;
-            else if (temperature >= 425 && temperature < 450) S = 10.9;
-            else if (temperature >= 450) S = 10.8;
+        if (temperature < 40)  S = 13.8;
+        else if (temperature >= 40 && temperature < 100) S = 13.8;
+        else if (temperature >= 100 && temperature < 150) S = 13.8;
+        else if (temperature >= 150 && temperature < 200) S = 13.4;
+        else if (temperature >= 200 && temperature < 260) S = 12.5;
+        else if (temperature >= 260 && temperature < 315) S = 11.7;
+        else if (temperature >= 315 && temperature < 345) S = 11.4;
+        else if (temperature >= 345 && temperature < 370) S = 11.2;
+        else if (temperature >= 370 && temperature < 400) S = 11.1;
+        else if (temperature >= 400 && temperature < 425) S = 11.0;
+        else if (temperature >= 425 && temperature < 450) S = 10.8;
+        else if (temperature >= 450 && temperature < 550) S = 10.5;
+        else if (temperature >= 550 && temperature < 575) S = 10.0;
+        else if (temperature >= 575 && temperature < 600) S = 8.1;
+        else if (temperature >= 600 && temperature < 625) S = 6.6;
+        else if (temperature >= 625 && temperature < 650) S = 5.1;
+        else if (temperature >= 650 && temperature < 675) S = 3.9;
+        else if (temperature >= 675 && temperature < 700) S = 3.0;
+        else if (temperature >= 700 && temperature < 725) S = 2.3;
+        else if (temperature >= 725 && temperature < 750) S = 1.8;
+        else if (temperature >= 750) S = 1.0;
     }
     else if(typeMetal == "316L") {
-        if (temperature < 40) S = 16.7;
-            else if (temperature >= 40 && temperature < 100) S = 14.1;
-            else if (temperature >= 100 && temperature < 150) S = 12.7;
-            else if (temperature >= 150 && temperature < 200) S = 11.7;
-            else if (temperature >= 200 && temperature < 260) S = 10.9;
-            else if (temperature >= 260 && temperature < 315) S = 10.4;
-            else if (temperature >= 315 && temperature < 345) S = 10.2;
-            else if (temperature >= 345 && temperature < 370) S = 10.0;
-            else if (temperature >= 370 && temperature < 400) S = 9.8;
-            else if (temperature >= 400 && temperature < 425) S = 9.6;
-            else if (temperature >= 425 && temperature < 450) S = 9.4;
-            else if (temperature >= 450) S = 9.3;
+        if (temperature < 40) S = 11.5;
+        else if (temperature >= 40 && temperature < 100) S = 11.5;
+        else if (temperature >= 100 && temperature < 150) S = 11.5;
+        else if (temperature >= 150 && temperature < 200) S = 10.9;
+        else if (temperature >= 200 && temperature < 260) S = 10.21;
+        else if (temperature >= 260 && temperature < 315) S = 9.67;
+        else if (temperature >= 315 && temperature < 345) S = 9.45;
+        else if (temperature >= 345 && temperature < 370) S = 9.31;
+        else if (temperature >= 370 && temperature < 400) S = 9.1;
+        else if (temperature >= 400 && temperature < 425) S = 8.91;
+        else if (temperature >= 425 && temperature < 450) S = 8.78;
+        else if (temperature >= 450) S = 8.77;
+    }
+    else if ( typeMetal == "F51" ) {
+        if (temperature < 40) S = 17.7;
+        else if (temperature >= 40 && temperature < 100) S = 17.7;
+        else if (temperature >= 100 && temperature < 150) S = 17.1;
+        else if (temperature >= 150 && temperature < 200) S = 16.5;
+        else if (temperature >= 200 && temperature < 260) S = 16.1;
+        else if (temperature >= 260) S = 15.9;
+    }
+    else if ( typeMetal == "F53" ) {
+        if (temperature < 40) S = 22.8;
+        else if (temperature >= 40 && temperature < 100) S = 22.7;
+        else if (temperature >= 100 && temperature < 150) S = 21.5;
+        else if (temperature >= 150 && temperature < 200) S = 20.8;
+        else if (temperature >= 200 && temperature < 260) S = 20.5;
+        else if (temperature >= 260) S = 20.2;
     }
 
     return S;
 }
 
-function setYoungModule(temperature){
+function setYoungModule(temperature, typeMetal){
     var E;
 
-    if (temperature < 40) E = 195000000;
-    else if (temperature >= 40 && temperature < 100) E = 189000000;
-    else if (temperature >= 100 && temperature < 150) E = 186000000;
-    else if (temperature >= 150 && temperature < 200) E = 183000000;
-    else if (temperature >= 200 && temperature < 260) E = 179000000;
-    else if (temperature >= 260 && temperature < 315) E = 176000000;
-    else if (temperature >= 315 && temperature < 345) E = 172000000;
-    else if (temperature >= 345 && temperature < 400) E = 169000000;
-    else if (temperature >= 400) E = 165000000;
+    if ( typeMetal == "316" || typeMetal == "316L" ) {
+        if (temperature < 40) E = 195000000;
+        else if (temperature >= 40 && temperature < 100) E = 189000000;
+        else if (temperature >= 100 && temperature < 150) E = 186000000;
+        else if (temperature >= 150 && temperature < 200) E = 183000000;
+        else if (temperature >= 200 && temperature < 260) E = 179000000;
+        else if (temperature >= 260 && temperature < 315) E = 176000000;
+        else if (temperature >= 315 && temperature < 345) E = 172000000;
+        else if (temperature >= 345 && temperature < 400) E = 169000000;
+        else if (temperature >= 400) E = 165000000;
+    }
+    else if ( typeMetal == "F51" || typeMetal == "F53" ) {
+        E = 200000000;
+    }
 
     return E;
 }

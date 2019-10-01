@@ -1,11 +1,22 @@
 $(document).ready( () => {
 
     $('#calcola').click(function(){
-        if(!$('#316').is(':checked') && !$('#316L').is(':checked')) alert("ERRORE: Seleziona il tipo di metallo");
+        
+        if ( $('.form-check-input:checked').val() == "316" && $('#temperature').val() > 816) {
+            alert('ERRORE: Inserire una temperatura inferiore a 816 °C');
+        }
+        if ( $('.form-check-input:checked').val() == "316L" && $('#temperature').val() > 454) {
+            alert('ERRORE: Inserire una temperatura inferiore a 454 °C');
+        }
+        if ( ($('.form-check-input:checked').val() == "F51" || $('.form-check-input:checked').val() == "F53") && $('#temperature').val() > 316) {
+            alert('ERRORE: Inserire una temperatura inferiore a 316 °C');
+        }
+
+        if(!$('#316').is(':checked') && !$('#316L').is(':checked') && !$('#F51').is(':checked') && !$('#F53').is(':checked')) alert("ERRORE: Seleziona il tipo di metallo");
         if($('#selectType').val() == "-- Seleziona il tipo --") alert("ERRORE: Seleziona il tipo di thermowell");
 
-        if(testAllField() && $('#selectType').val() != "-- Seleziona il tipo --" && ($('#316').is(':checked') || $('#316L').is(':checked'))){
-            const E_REF = 195000000, METAL_DENSITY_M = 7980, METAL_DENSITY_MM = 0.00000798, RHO_S = 2707.12;
+        if(testAllField() && $('#selectType').val() != "-- Seleziona il tipo --" && ($('#316').is(':checked') || $('#316L').is(':checked') || $('#F51').is(':checked') || $('#F53').is(':checked'))){
+            const E_REF = 195000000, RHO_S = 2707.12;
             const N_S = 0.22, DELTA = 0.0005, C_D_BIG = 1.4, C_D_SMALL = 0.1, C_L = 1.0, kT = 2.2;
 
             var pressione = $('#pressure').val();
@@ -25,12 +36,15 @@ $(document).ready( () => {
             
             var typeMetal = $('.form-check-input:checked').val();
             
+            var METAL_DENSITY_M = setMetalDensityM(typeMetal);
+            var METAL_DENSITY_MM = setMetalDensityMM(typeMetal);
+
             var sF = setSf(type);
             var nR = setVariableNr(speed, tipDiameter, density, viscosity);
             var nSc = setVariableNsc(DELTA, METAL_DENSITY_M, density, internalDiameter, tipDiameter);
             var gSp = setGsp(shieldLength, length, rootDiameter, internalDiameter, tipDiameter);
             var S = setS(typeMetal, temperature);
-            var E = setYoungModule(temperature);
+            var E = setYoungModule(temperature, typeMetal);
             var max = setVariableMax(E, sF, E_REF);
             var fnc = naturalFrequencyCalculation(rootDiameter, tipDiameter, internalDiameter, METAL_DENSITY_MM, length, density, METAL_DENSITY_M, RHO_S, type, E);
             var sFc = strouhalFrequencyCalculation(N_S, speed, tipDiameter);
