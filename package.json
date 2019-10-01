@@ -20,7 +20,7 @@
     "base64-img": "^1.0.4",
     "electron": "^4.0.4",
     "electron-installer-dmg": "^2.0.0",
-    "electron-packager": "^13.0.1",
+    "electron-packager": "^13.1.1",
     "electron-winstaller": "^2.7.0"
   },
   "dependencies": {
