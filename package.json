@@ -1,6 +1,6 @@
 {
   "name": "thermowell-design",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Cross-Platform desktop app for design a termowell",
   "main": "main.js",
   "scripts": {
