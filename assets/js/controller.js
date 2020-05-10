@@ -59,6 +59,9 @@ function setMetalDensityM( typeMetal ) {
     else if ( typeMetal == "F51" || typeMetal == "F53") {
         return 7820;
     }
+    else if ( typeMetal == "in625" ) {
+        return 8440;
+    }
 }
 
 function setMetalDensityMM( typeMetal ) {
@@ -67,6 +70,9 @@ function setMetalDensityMM( typeMetal ) {
     }
     else if ( typeMetal == "F51" || typeMetal == "F53") {
         return 0.00000782;
+    }
+    else if ( typeMetal == "in625" ) {
+        return 0.00000844;
     }
 }
 
@@ -154,6 +160,25 @@ function setS(typeMetal, temperature) {
         else if (temperature >= 200 && temperature < 260) S = 20.5;
         else if (temperature >= 260) S = 20.2;
     }
+    else if ( typeMetal == "in625" ) {
+        if (temperature < 40)  S = 23.6;
+        else if (temperature >= 40 && temperature < 100) S = 23.6;
+        else if (temperature >= 100 && temperature < 150) S = 23.6;
+        else if (temperature >= 150 && temperature < 200) S = 23.2;
+        else if (temperature >= 200 && temperature < 260) S = 22.7;
+        else if (temperature >= 260 && temperature < 315) S = 22.3;
+        else if (temperature >= 315 && temperature < 345) S = 22.1;
+        else if (temperature >= 345 && temperature < 370) S = 21.9;
+        else if (temperature >= 370 && temperature < 400) S = 21.7;
+        else if (temperature >= 400 && temperature < 425) S = 21.5;
+        else if (temperature >= 425 && temperature < 450) S = 21.3;
+        else if (temperature >= 450 && temperature < 500) S = 21;
+        else if (temperature >= 500 && temperature < 550) S = 20.5;
+        else if (temperature >= 550 && temperature < 575) S = 20.2;
+        else if (temperature >= 575 && temperature < 600) S = 19.2;
+        else if (temperature >= 600 && temperature < 625) S = 13.6;
+        else if (temperature >= 625 && temperature <= 649) S = 9.1;
+    }
 
     return S;
 }
@@ -174,6 +199,15 @@ function setYoungModule(temperature, typeMetal){
     }
     else if ( typeMetal == "F51" || typeMetal == "F53" ) {
         E = 200000000;
+    }
+    else if ( typeMetal == "in625" ) {
+        if (temperature <= 21) E = 207500000;
+        else if (temperature >= 21 && temperature < 93) E = 204100000;
+        else if (temperature >= 93 && temperature < 204) E = 197900000;
+        else if (temperature >= 204 && temperature < 316) E = 191700000;
+        else if (temperature >= 316 && temperature < 427) E = 185500000;
+        else if (temperature >= 427 && temperature < 538) E = 178600000;
+        else if (temperature >= 538 && temperature <= 649) E = 170300000;
     }
 
     return E;

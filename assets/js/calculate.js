@@ -11,11 +11,15 @@ $(document).ready( () => {
         if ( ($('.form-check-input:checked').val() == "F51" || $('.form-check-input:checked').val() == "F53") && $('#temperature').val() > 316) {
             alert('ERRORE: Inserire una temperatura inferiore a 316 °C');
         }
+        
+        if ( ($('.form-check-input:checked').val() == "F51" || $('.form-check-input:checked').val() == "F53") && $('#temperature').val() > 649) {
+            alert('ERRORE: Inserire una temperatura inferiore a 649 °C');
+        }
 
-        if(!$('#316').is(':checked') && !$('#316L').is(':checked') && !$('#F51').is(':checked') && !$('#F53').is(':checked')) alert("ERRORE: Seleziona il tipo di metallo");
+        if(!$('#316').is(':checked') && !$('#316L').is(':checked') && !$('#F51').is(':checked') && !$('#F53').is(':checked') && !$('#in625').is(':checked')) alert("ERRORE: Seleziona il tipo di metallo");
         if($('#selectType').val() == "-- Seleziona il tipo --") alert("ERRORE: Seleziona il tipo di thermowell");
 
-        if(testAllField() && $('#selectType').val() != "-- Seleziona il tipo --" && ($('#316').is(':checked') || $('#316L').is(':checked') || $('#F51').is(':checked') || $('#F53').is(':checked'))){
+        if(testAllField() && $('#selectType').val() != "-- Seleziona il tipo --" && ($('#316').is(':checked') || $('#316L').is(':checked') || $('#F51').is(':checked') || $('#F53').is(':checked') || $('#in625').is(':checked'))){
             const E_REF = 195000000, RHO_S = 2707.12;
             const N_S = 0.22, DELTA = 0.0005, C_D_BIG = 1.4, C_D_SMALL = 0.1, C_L = 1.0, kT = 2.2;
 
