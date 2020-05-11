@@ -12,7 +12,7 @@ $(document).ready( () => {
             alert('ERRORE: Inserire una temperatura inferiore a 316 °C');
         }
         
-        if ( ($('.form-check-input:checked').val() == "F51" || $('.form-check-input:checked').val() == "F53") && $('#temperature').val() > 649) {
+        if ( $('.form-check-input:checked').val() == "in625" && $('#temperature').val() > 649) {
             alert('ERRORE: Inserire una temperatura inferiore a 649 °C');
         }
 

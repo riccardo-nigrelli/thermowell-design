@@ -18,13 +18,13 @@ $(document).ready( () => {
 
         // console.log(__dirname)
 
-        var pdf = new JsPDF();
+        var pdf = new JsPDF('p', '', 'A4', true);
 
         customer = $('#customer').val().trim();
         tag = $('#tag').val().trim();
         pN = $('#pN').val().trim();
 
-        pdf.addImage(LAYOUT, 'PNG', 0, 0, 212, 297);
+        pdf.addImage(LAYOUT, 'PNG', 0, 0, 212, 297, 'FAST');
 
         pdf.setFontSize(10);
         
@@ -56,19 +56,19 @@ $(document).ready( () => {
         switch(type){
             case 'FLANGED_THERMOWELL':
                 typeLower = "Flanged"; 
-                pdf.addImage(sketch, 'PNG', 143, 109, 26, 40);
+                pdf.addImage(sketch, 'PNG', 143, 109, 26, 40, '', 'FAST');
                 break;
             case 'WELD_IN_THERMOWELL': 
                 typeLower = "Weld In";
-                pdf.addImage(sketch, 'PNG', 147, 109, 15, 40);
+                pdf.addImage(sketch, 'PNG', 147, 109, 15, 40, '', 'FAST');
                 break;
             case 'FULL_PENETRATION_THERMOWELL': 
                 typeLower = "Full Penetration";
-                pdf.addImage(sketch, 'PNG', 143, 109, 26, 40);
+                pdf.addImage(sketch, 'PNG', 143, 109, 26, 40, '', 'FAST');
                 break;
             case 'LAP_JOINT_THERMOWELL': 
                 typeLower = "Lap Join";
-                pdf.addImage(sketch, 'PNG', 147, 109, 15, 40);
+                pdf.addImage(sketch, 'PNG', 147, 109, 15, 40, '', 'FAST');
                 break;
             case 'THREADED_THERMOWELL': 
                 typeLower = "Threaded";
