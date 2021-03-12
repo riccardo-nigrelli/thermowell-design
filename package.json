@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "base64-img": "^1.0.4",
-    "jspdf": "^1.5.3"
+    "jspdf": "^2.3.1"
   },
   "bugs": {
     "url": "https://github.com/riccardo-nigrelli/thermowell-design/issues"
